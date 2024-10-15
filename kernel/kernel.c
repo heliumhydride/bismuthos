@@ -13,26 +13,15 @@ void _kernel_init(void) { // The question is does argc argv work on bare metal ?
 
   printf("Very long string that must be at the very least, like bare minimum 80 characters long!\n\n");
 
-  for(int i = 42; i <= 122; i++) {
-    putchar(i, 0x4F);
-  }
-
   vt_line = 24;
-  vt_col  = 0;
+  //vt_col  = 0;
   print_color("  --Under contruction--                                                          ", 0xF0);
 
   vt_line = 6;
   vt_col = 0;
-  /*
-  for(int i = 0; i < 8; i++) {
-    for(int j = 0; i < 16; i++) {
-      putchar(i+j, 0x7F);
-    }
-    vt_line++;
-  }
-  */
-  for(int i = 0; i < 128; i++)
-    putchar(i, 0x0F);
+
+  for(int i = 0; i < 80; i++)
+    printf("terminal scrolling ?\n");
 
   /*
     We do not know the fat32/tar initrd end, so we only define the begin ptr

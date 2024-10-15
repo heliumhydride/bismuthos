@@ -20,15 +20,20 @@ void putchar(const char ch, uint8_t col) {
   
   if(++vt_col == VGA_WIDTH) {
     vt_col = 0;
-    if(++vt_line == VGA_HEIGHT)
+    //if(++vt_line == VGA_HEIGHT) {
+    if(++vt_line >= VGA_HEIGHT) {
       // TODO terminal scrolling
-      for(size_t i = 0; i<VGA_WIDTH; i+=2) { // Remove the first line of the screen
-        vt_buffer[i] = ' ';
-        vt_buffer[i+1] = 0x0F;
+      for(size_t i = 0; i<VGA_WIDTH*2-1; i++) { // Remove the first line of the screen
+        vt_buffer[i] = 0;
+        vt_buffer[i+1] = 0;
       }
+      vt_buffer = vt_buffer-(VGA_WIDTH*2);
+      /*
       for(size_t i = VGA_WIDTH; i>VGA_WIDTH*VGA_HEIGHT; i--) // Shift the lines up
         vt_buffer[i] = vt_buffer[i-VGA_WIDTH];
-      vt_line = 0;
+      */
+      //vt_line = 0;
+    }
   }
 }
 
@@ -65,14 +70,12 @@ void printf(const char* s) { // for now, just a print() command
 void print_color(const char* s, uint8_t col) {
   for(size_t i = 0; i < strlen(s); i++)
     putchar(s[i], col);
-  // vt_col = 0; // TODO TEMP FIX
 }
 
 void vt_clear(uint8_t col) {
+  for(size_t i = 0; i < VGA_WIDTH*VGA_HEIGHT; i++) {
+    putchar(' ', col);
+  }
   vt_col = 0;
   vt_line = 0;
-  for(int i = 0; i < VGA_WIDTH*VGA_HEIGHT; i++) {
-    vt_buffer[i]   = 0;
-    vt_buffer[i+1] = col;
-  }
 }
