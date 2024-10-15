@@ -19,7 +19,7 @@ void _kernel_init(void) { // The question is does argc argv work on bare metal ?
 
   vt_line = 24;
   vt_col  = 0;
-  print_color("  --Under contruction--                                                         ", 0xF0);
+  print_color("  --Under contruction--                                                          ", 0xF0);
 
   vt_line = 6;
   vt_col = 0;
