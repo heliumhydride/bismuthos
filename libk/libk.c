@@ -17,7 +17,7 @@ void free(void* ptr) {
   // TODO implement free 
 }
 
-char* itoa(int n, char* s, int base) {
+char* itoa(const int n, char* str, const int base) {
   //stub function, returns NULL
   return NULL;
 }

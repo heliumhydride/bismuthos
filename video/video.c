@@ -22,12 +22,14 @@ void putchar(const char ch, uint8_t col) {
     vt_col = 0;
     //if(++vt_line == VGA_HEIGHT) {
     if(++vt_line >= VGA_HEIGHT) {
-      // TODO terminal scrolling
+      // TODO terminal will only scroll once ?
+      size_t vt_col_old = vt_col;
+      size_t vt_line_old = vt_line;
       for(size_t i = 0; i<VGA_WIDTH*2-1; i++) { // Remove the first line of the screen
         vt_buffer[i] = 0;
         vt_buffer[i+1] = 0;
       }
-      vt_buffer = vt_buffer-(VGA_WIDTH*2);
+      vt_buffer = vt_buffer-(VGA_WIDTH*2); // shift the lines up, but it a good idea to point to 80 characters after vt_buffer, maybe some data after will be shown as well ?
       /*
       for(size_t i = VGA_WIDTH; i>VGA_WIDTH*VGA_HEIGHT; i--) // Shift the lines up
         vt_buffer[i] = vt_buffer[i-VGA_WIDTH];

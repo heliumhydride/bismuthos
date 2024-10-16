@@ -1,4 +1,3 @@
-add to git repo
 better makefile and build system
 fix clang build (qemu cannot run it, multiboot header issue perhaps ?)
 clean up code base
@@ -12,8 +11,9 @@ printf(), sprintf(), snprintf(), vprintf(), vsprintf(), vsnprintf() [use va_list
 strings.h implementation
 implement tty, console and serial
 qemu serial driver
-ramdisk (fat32, ustar)
 32bit protected mode
+ramdisk (fat32, ustar)
+FILE* functions ( fopen(), fread(), fclose(), ferror(), fseek(), ...)
 graphical mode generic VGA/VESA driver (use inport/outport)
 IDE driver
 rw fat32 support

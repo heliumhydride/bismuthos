@@ -9,6 +9,6 @@
 size_t strlen(const char* s);
 void* malloc(size_t size);
 void free(void* p);
-char* itoa(int n, char* s, int base);
+char* itoa(const int n, char* str, const int base);
 
 #endif
