@@ -32,3 +32,4 @@ uefi support (use posix-uefi)
 64 bit long mode **support** (not imposed)
 multicore, 128TB ram support
 multitasking
+background tasks
