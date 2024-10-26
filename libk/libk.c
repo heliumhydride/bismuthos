@@ -17,32 +17,35 @@ void free(void* ptr) {
   // TODO implement free 
 }
 
-/*
- * C++ version 0.4 char* style "itoa":
- * Written by Lukás Chmela
- * Released under GPLv3.
- */
+char* itoa(const int n, char* str, const int base) {
+  int digit = 0;
+  int new_n = n;
+  char* ptr = str; char* ptr1 = str;
+  char* chars = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz";
+  char ch;
 
-char* itoa(int value, char* result, int base) {
-  // check that the base if valid
-  if (base < 2 || base > 36) { *result = '\0'; return result; }
-
-  char* ptr = result, *ptr1 = result, tmp_char;
-  int tmp_value;
-
-  do {
-    tmp_value = value;
-    value /= base;
-    *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz" [35 + (tmp_value - value * base)];
-  } while ( value );
-
-  // Apply negative sign
-  if (tmp_value < 0) *ptr++ = '-';
-  *ptr-- = '\0';
-  while(ptr1 < ptr) {
-    tmp_char = *ptr;
-    *ptr--= *ptr1;
-    *ptr1++ = tmp_char;
+  if(base > 36) {
+    *ptr++ = '\0';
+    return str;
   }
-  return result;
-}	
+
+  // TODO printed in reverse
+  // note: this makes it in reverse, we need to reverse everything afterwards
+  while(new_n != 0) {
+    digit = new_n % base;
+    *ptr++ = chars[35+digit];
+    new_n = (int)(new_n/base);
+  }
+
+  if(n < 0) {
+    *ptr++ = '-';
+  }
+
+  *ptr-- = '\0'; // finish string
+  while(ptr1 < ptr) { // reverse string
+    ch = *ptr;
+    *ptr-- = *ptr1;
+    *ptr1++ = ch;
+  }
+  return str;
+}
