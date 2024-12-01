@@ -6,7 +6,7 @@ terminal scrolling (shift lines by -1)
 ps2 keyboard driver
 malloc(), free(), realloc(), calloc()
 atoi(), atol(), atoll() [if applicable to architecture]
-printf(), sprintf(), snprintf(), vprintf(), vsprintf(), vsnprintf() [use va_list for printf]
+printf(), sprintf(), snprintf(), vprintf(), vsprintf(), vsnprintf() [use va_list for printf] (allow %b using -DNON_STANDARD_LIBC_EXTS flag)
 strings.h implementation
 implement tty, console and serial
 qemu serial driver
@@ -20,9 +20,10 @@ usb stack
 usb keyboard, pendrive, ... support
 elf program loading
 syscalls interface
-bismuth libc (possible musl libc port ?)
+bismuth libc (possible musl libc port ?) (*printf %b and itoa activated using -DNON_STANDARD_LIBC_EXTS flag)
 simple /bin/sh implementation
 basic fs layout (bin,boot,etc,home,dev,lib,...)
+networking TCP and UDP stack
 userspace storage, fat32fs, tarfs, networking drivers
 kernelspace vfs,io,memmgmt,display drivers
 simple bootloader (BismuthLDR) (nt osloader style) with boot.ini support
@@ -32,3 +33,4 @@ uefi support (use posix-uefi)
 multicore, 128TB ram support
 multitasking
 background tasks
+port some software over (7z, vim, python, lua, libarchive, xz, gzip, bzip2, fastfetch, qemu, gmake, curl, llvm+clang,)
