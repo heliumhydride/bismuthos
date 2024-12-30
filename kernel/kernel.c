@@ -5,6 +5,11 @@
 #include "../include/video.h"
 #include "../config.h" // for readability, already included by video.h
 
+void _kernel_poweroff(void) {
+  printk("SYSTEM IS HALTING NOW!\n", 0);
+	__asm__ __volatile__("hlt");
+}
+
 //void _kernel_init(int argc, char* argv[]) {
 void _kernel_init(void) { // The question is does argc argv work on bare metal ? (yes i know i need to use my own bootloader for this)
 
@@ -35,7 +40,11 @@ void _kernel_init(void) { // The question is does argc argv work on bare metal ?
   uint8_t* initrd_begin = (uint8_t*)0x106010;
 
   char buf[33];
-  itoa(*initrd_begin, buf, 10);
-  printf(buf);
-	__asm__ __volatile__("hlt");
+  itoa((size_t)initrd_begin, buf, 16);
+
+  printf("initrd start: 0x");
+  printf(buf); putchar('\n', VGA_COLOR);
+  putchar(*initrd_begin, VGA_COLOR); putchar('\n', VGA_COLOR);
+
+  _kernel_poweroff();
 }

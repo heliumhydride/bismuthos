@@ -40,6 +40,7 @@ void putchar(const char ch, uint8_t col) {
 }
 
 void printk(const char* s, unsigned int severity) {
+  int vflag = 1; // TODO implement verbose boot
   // 0 -> Log/Note; 1 -> Warning; 2 -> Error; 3 -> Kernel panic
   uint8_t col;
   switch(severity) {
@@ -60,7 +61,8 @@ void printk(const char* s, unsigned int severity) {
       break;
   }
 
-  print_color(s,col);
+  if(severity > 0 || vflag)
+    print_color(s,col);
 }
 
 // int printf(const char* format, ..) {

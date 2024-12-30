@@ -2,6 +2,7 @@ better makefile and build system
 fix clang build (qemu cannot run it, multiboot header issue perhaps ?)
 clean up code base
 
+add -v flag for booting (for now will be hardcoded as enabled) for printk, to not show logs
 terminal scrolling (shift lines by -1)
 ps2 keyboard driver (make a function to convert scan code to ascii print / operation depending on input and implement qwerty and azerty keyboard layouts with a keyboard layout switching function)
 malloc(), free(), realloc(), calloc()
