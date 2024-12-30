@@ -41,4 +41,7 @@ clean:
 	rm -f $(O) $(INITRD_O)
 	rm -f $(OBJS)
 
-.PHONY: clean run
+check:
+	./scripts/check.sh
+
+.PHONY: clean run check
