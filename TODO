@@ -1,10 +1,10 @@
+rewrite video/term driver from scratch (vgaterm.c)
 better makefile and build system
-fix clang build (qemu cannot run it, multiboot header issue perhaps ?)
 clean up code base
-
 add -v flag for booting (for now will be hardcoded as enabled) for printk, to not show logs
 terminal scrolling (shift lines by -1)
 ps2 keyboard driver (make a function to convert scan code to ascii print / operation depending on input and implement qwerty and azerty keyboard layouts with a keyboard layout switching function)
+fix clang build (qemu cannot run it, multiboot header issue perhaps ?)
 malloc(), free(), realloc(), calloc()
 atoi(), atol(), atoll() [if applicable to architecture]
 printf(), sprintf(), snprintf(), vprintf(), vsprintf(), vsnprintf() [use va_list for printf] (allow %b using -DNON_STANDARD_LIBC_EXTS flag)
@@ -33,6 +33,7 @@ uefi support (use posix-uefi)
 64 bit long mode **support** (not imposed)
 multicore, 128TB ram support
 multitasking
+multiuser support
 background tasks
 port some software over (7z, vim, python, lua, libarchive, xz, gzip, bzip2, fastfetch, qemu, gmake, curl, llvm+clang, mksh/yash, zenithutils)
 

@@ -14,7 +14,7 @@ void _kernel_poweroff(void) {
 void _kernel_init(void) { // The question is does argc argv work on bare metal ? (yes i know i need to use my own bootloader for this)
 
   vt_clear(VGA_COLOR);
-	printk("BismuthOS version " VERSION " (under contruction)\n", 0);
+	printk("\nBismuthOS version " VERSION " (under contruction)\n", 0); // TODO it doesnt print unless i lower one line first
 
   printf("Very long string that must be at the very least, like bare minimum 80 characters long!\n\n");
 
