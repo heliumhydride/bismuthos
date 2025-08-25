@@ -94,7 +94,7 @@ void _kernel_init(void) { // The question is does argc argv work on bare metal ?
     }
   }
   set_console_color(VGA_COLOR);
-  putchar('\n');
+  puts("\n\n");
 
   _kernel_poweroff();
 }
