@@ -7,10 +7,14 @@ PLEASE never consider usage for production (even when you will be able to boot)
 ## Building
 
 ### requirements
-* c compiler: [gcc compiler](https://gcc.gnu.org/) (clang and tcc don't work yet)
+* **i486-elf** targetting c compiler: see [osdev wiki](http://wiki.osdev.org/GCC_Cross-Compiler) (i can't get clang or tcc to work yet) (note: i586 and i686 can also be used)
 * assembler: [nasm assembler](https://nasm.us/)
 * [gnu make](https://www.gnu.org/software/make/)
 * linker: [binutils ld](https://www.gnu.org/software/binutils/) (i plan to support [mold](https://github.com/rui314/mold) and [llvm linker](https://lld.llvm.org/))
+
+nice to have:
+* emulator: [qemu](https://www.qemu.org/)
+* code checking tool: [cppcheck](https://cppcheck.sourceforge.io/), run `make check` or `scripts/check.sh`
 
 ### configuring
 Create the config file:
@@ -33,7 +37,6 @@ make boot.sys
 ```sh
 make run
 ```
-NOTE: you need to install [qemu](https://www.qemu.org/)
 
 ### debugging
 * add `-g3` to `CFLAGS` and `LDFLAGS` in `config.mk`
