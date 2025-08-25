@@ -15,6 +15,7 @@ PLEASE never consider usage for production (even when you will be able to boot)
 nice to have:
 * emulator: [qemu](https://www.qemu.org/)
 * code checking tool: [cppcheck](https://cppcheck.sourceforge.io/), run `make check` or `scripts/check.sh`
+* debugger: [gdb](https://www.sourceware.org/gdb/) or [lldb](https://lldb.llvm.org/)
 
 ### configuring
 Create the config file:
@@ -39,6 +40,22 @@ make run
 ```
 
 ### debugging
+change some compilation settings first:
 * add `-g3` to `CFLAGS` and `LDFLAGS` in `config.mk`
 * add `-g` to `ASFLAGS` in `config.mk`
 * add `-s -S` to `QEMU_FLAGS` in `config.mk`
+
+start debugging using **gdb**:
+```sh
+$ gdb boot.sys
+...
+(gdb) target remote :1234
+```
+
+start debugging using **lldb**:
+```sh
+$ lldb boot.sys
+...
+(lldb) target create boot.sys
+(lldb) gdb-remote localhost:1234
+```
