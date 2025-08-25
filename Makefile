@@ -6,7 +6,7 @@ cflags_private = -ffreestanding $(CFLAGS)
 ldflags_private = -ffreestanding -T kernel/linker.ld -nostdlib $(LDFLAGS)
 #ldflags_private = -ffreestanding -Wl,-Ttext=0x100000 -nostdlib $(LDFLAGS)
 
-OBJS = kernel/boot.o kernel/kernel.o libk/libk.o video/video.o io/io.o
+OBJS = kernel/boot.o kernel/kernel.o libk/libk.o video/vgaterm.o io/io.o
 
 all: config.h $(O) $(INITRD_O)
 
@@ -25,8 +25,12 @@ kernel/kernel.o: kernel/kernel.c
 libk/libk.o: libk/libk.c
 	$(CC) $(cflags_private) -c -o libk/libk.o libk/libk.c
 
+# Old video driver, not compiled normally
 video/video.o: video/video.c
 	$(CC) $(cflags_private) -c -o video/video.o video/video.c
+
+video/vgaterm.o: video/vgaterm.c
+	$(CC) $(cflags_private) -c -o video/vgaterm.o video/vgaterm.c
 
 io/io.o: io/io.c
 	$(CC) $(cflags_private) -c -o io/io.o io/io.c
