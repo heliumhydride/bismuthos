@@ -52,7 +52,7 @@ void putchar(const char c) {
       break;
   }
 
-  if(console_Ypos + 1 >= VGA_HEIGHT)
+  if(console_Ypos + 1 > VGA_HEIGHT)
     scroll_console_up(1);
 }
 
