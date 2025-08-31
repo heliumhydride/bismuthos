@@ -10,7 +10,7 @@ extern size_t console_Ypos, console_Xpos;
 extern uint8_t console_color;
 extern uint8_t* video_ptr;
 
-void scroll_console_up(uint32_t n); 
+void scroll_console_up(void); 
 uint8_t get_color_byte(uint8_t fg, uint8_t bg); 
 void set_console_color(uint8_t color); 
 void console_clear(uint8_t color); 

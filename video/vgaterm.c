@@ -7,7 +7,7 @@ size_t console_Ypos = 0, console_Xpos = 0;
 uint8_t console_color = VGA_COLOR;
 uint8_t* video_ptr = (uint8_t*)VGA_BUF_PTR;
 
-void scroll_console_up(uint32_t n) {
+void scroll_console_up(void) {
   console_Ypos = 0;
 }
 
@@ -36,7 +36,7 @@ void putch_at(const char c, const size_t y, const size_t x, const uint8_t color)
 
 void _newline(void) {
   if(console_Ypos + 1 > VGA_HEIGHT) {
-    scroll_console_up(1);
+    scroll_console_up();
   } else {console_Ypos++;}
   console_Xpos = 0;
 }
@@ -55,7 +55,7 @@ void putchar(const char c) {
   }
 
   if(console_Ypos + 1 > VGA_HEIGHT)
-    scroll_console_up(1);
+    scroll_console_up();
 }
 
 void puts(const char* s) {
