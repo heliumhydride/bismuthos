@@ -35,7 +35,9 @@ void putch_at(const char c, const size_t y, const size_t x, const uint8_t color)
 }
 
 void _newline(void) {
-  console_Ypos++;
+  if(console_Ypos + 1 > VGA_HEIGHT) {
+    scroll_console_up(1);
+  } else {console_Ypos++;}
   console_Xpos = 0;
 }
 
