@@ -26,7 +26,7 @@ void console_clear(uint8_t color) {
       putch_at(' ', y, x, color);
     }
   }
-  console_Ypos, console_Xpos = 0, 0;
+  console_Ypos = 0, console_Xpos = 0;
 }
 
 void putch_at(const char c, const size_t y, const size_t x, const uint8_t color) {
