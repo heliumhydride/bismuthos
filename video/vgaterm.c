@@ -46,9 +46,9 @@ void putchar(const char c) {
       break;
     default:
       putch_at(c, console_Ypos, console_Xpos, console_color);
-      if(console_Xpos++ >= VGA_WIDTH) {
+      if(console_Xpos+1 >= VGA_WIDTH) {
         _newline();
-      }
+      } else {console_Xpos++;}
       break;
   }
 
