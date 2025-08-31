@@ -8,7 +8,13 @@ uint8_t console_color = VGA_COLOR;
 uint8_t* video_ptr = (uint8_t*)VGA_BUF_PTR;
 
 void scroll_console_up(void) {
-  console_Ypos = 0;
+  // go back up
+  console_Ypos--;
+
+  // copy video memory left by 80 characters (160 uint8_t)
+  for(size_t i = 0; i < VGA_WIDTH*VGA_HEIGHT*2; i++) {
+    video_ptr[i] = video_ptr[i + VGA_WIDTH*2];
+  }
 }
 
 uint8_t get_color_byte(uint8_t fg, uint8_t bg) {

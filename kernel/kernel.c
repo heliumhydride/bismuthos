@@ -96,5 +96,14 @@ void _kernel_init(void) { // The question is does argc argv work on bare metal ?
   set_console_color(VGA_COLOR);
   puts("\n\n");
 
+  char buf[24] = {0};
+  for(int i = 0; i < 20; i++) {
+    puts("terminal scrolling ");
+    itoa(i, buf, 10);
+    puts(buf);
+    puts("\n");
+  }
+  puts("end term scrolling\n"); // TODO last line is not used still??
+
   _kernel_poweroff();
 }
